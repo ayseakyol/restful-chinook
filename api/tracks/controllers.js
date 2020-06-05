@@ -44,13 +44,13 @@ const controllers = {
                    VALUES("${Name}", "${AlbumId}", "${MediaTypeId}", "${GenreId}", "${Composer}", "${Milliseconds}", "${Bytes}", "${UnitPrice}"
                    )`;
 
-    db.all(sql, (err, rows) => {
+    db.run(sql, (err) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
 
-      res.json(rows);
+      res.json("The track is successfully added to the database");
     });
   },
   update: (req, res) => {
@@ -76,13 +76,13 @@ const controllers = {
                      UnitPrice = ${UnitPrice}
                  WHERE TrackId = ${id} `;
 
-    db.all(sql, (err, rows) => {
+    db.run(sql, (err) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
 
-      res.json(rows);
+      res.json("The track is successfully changed in the database");
     });
   },
   delete: (req, res) => {
@@ -91,13 +91,13 @@ const controllers = {
     const sql = `DELETE FROM tracks
     WHERE TrackId = '${id}'`;
 
-    db.all(sql, (err, rows) => {
+    db.run(sql, (err) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
 
-      res.json(rows);
+      res.json("The track is successfully deleted from the database");
     });
   },
 };
