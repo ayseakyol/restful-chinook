@@ -38,13 +38,13 @@ const controllers = {
                    )
                    VALUES("${Title}", ${ArtistId})`;
 
-    db.all(sql, (err, rows) => {
+    db.run(sql, (err, msg) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
 
-      res.json(rows);
+      res.json("The album is successfully added.");
     });
   },
   update: (req, res) => {
@@ -58,13 +58,13 @@ const controllers = {
                      ArtistId = '${ArtistId}'
                  WHERE AlbumId = '${id}' `;
 
-    db.all(sql, (err, rows) => {
+    db.run(sql, (err, msg) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
 
-      res.json(rows);
+      res.json("The album is successfully changed.");
     });
   },
   delete: (req, res) => {
@@ -73,13 +73,13 @@ const controllers = {
     const sql = `DELETE FROM albums
     WHERE AlbumId = '${id}'`;
 
-    db.all(sql, (err, rows) => {
+    db.run(sql, (err, msg) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
 
-      res.json(rows);
+      res.json("The album is successfully deleted.");
     });
   },
 };
