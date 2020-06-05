@@ -7,7 +7,6 @@ Building this site one step at a time
 ## 0. README
 
 - Write the `README.md
-- Include a License
 - Include this `development.md` file
 
 ---
