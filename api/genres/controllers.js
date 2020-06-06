@@ -18,13 +18,13 @@ const controllers = {
 
     const sql = `SELECT * FROM genres WHERE  GenreId = '${id}'`;
 
-    db.all(sql, (err, rows) => {
+    db.get(sql, (err, row) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
 
-      res.json(rows);
+      res.json(row);
     });
   },
   create: (req, res) => {
